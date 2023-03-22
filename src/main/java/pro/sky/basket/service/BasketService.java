@@ -5,6 +5,6 @@ import pro.sky.basket.model.Basket;
 import java.util.List;
 
 public interface BasketService {
-     void add(Integer id);
+     Basket add(Integer id);
      List<Basket> getAll();
 }

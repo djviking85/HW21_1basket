@@ -20,8 +20,9 @@ public class BasketController {
         this.basketService = basketService;
     }
 // гет мап на добавление по id? и по get?
+    // они принимают листы корзин
     @GetMapping("/add")
-    public Basket add(@RequestParam("id") Integer basketId) {
+    public List<Basket> add(@RequestParam("id") List<Integer> basketId) {
         return  basketService.add(basketId);
     }
     @GetMapping("/get")

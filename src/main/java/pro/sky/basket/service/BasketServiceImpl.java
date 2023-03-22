@@ -5,15 +5,20 @@ import pro.sky.basket.model.Basket;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BasketServiceImpl implements BasketService {
     private final List<Basket> basket = new ArrayList<>();
 
 // делаем метод add который принимает айди и добавляет его в наш лист
-    public Basket add(Integer id) {
-        Basket newBasket = new Basket(id);
-        basket.add(newBasket);
+    public List<Basket> add(List<Integer> ids) {
+        // по стримам - проходим мапой с добавлением новых айди и записываем в наш лист
+        List<Basket> newBasket = ids.stream()
+                .map(Basket::new)
+                .collect(Collectors.toList());
+        //добавляем в корзину новые айтемы
+        basket.addAll(newBasket);
 
         return newBasket;
     }
